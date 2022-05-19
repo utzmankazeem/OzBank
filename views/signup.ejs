@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color:blanchedalmond;
+                border: 2px salmon;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 500px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            container{
+                border-radius: 5px;
+                padding: 5px;
+                top: 70px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <container>
+                <h2>My BankApp</h2>
+                    <p><a href="/">bank app</a></p>
+                    <p><a href="/signin">login page</a></p>
+
+                <h4>Banker Sign up</h4>
+                <form action="/signup" method="post">
+
+                    <p>Username: <input type="text" name="username"
+                        value="<%= typeof username != 'undefined' ? username : '' %>"></p>
+                    <p>Email: <input type="text" name="email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>"></p>
+                    <p>Password: <input type="text" name="pass1"
+                        value="<%= typeof pass1 != 'undefined' ? pass1 : '' %>"></p>
+                    <p>Confirm Password: <input type="text" name="pass2"
+                        value="<%= typeof pass2 != 'undefined' ? pass2 : '' %>"></p>
+
+                    <input type="submit" value="click to submit">
+                </form>
+            <% if(typeof errors != 'undefined') { %>
+                    <% errors.forEach(function(error){ %>
+                        <h5 style="color: red"> <%- error.msg %> </h5>
+                    <% }) %>
+                <% } %>
+                
+                <% if(success != 'undefined') { %>
+                    <p style="color: green"> <%- success %> </p>
+                <% } %>
+                    
+                <% if(er_msg != 'undefined'){ %>
+                    <p style="color: red"> <%= er_msg %> </p>
+                <% } %>
+            </container>
+        </section>
+            
+    </body>
+</html>

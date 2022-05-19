@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color: black;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 500px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            aside{
+                width: 30%;
+                border-radius: 30px;
+                top: 160px;
+                left: 20px;
+                position: absolute;
+            }
+            article{
+                width: 40%;
+                background-color:sienna;
+                border-radius: 5px;
+                padding: 5px;
+                top: 160px;
+                right: 40px;
+                position: absolute;
+            }
+            main{
+                width: 50%;
+                border-radius: 5px;
+                padding: 5px;
+                top: 330px;
+                right: 20px;
+                position: absolute;
+            }
+            container{
+                width: 50%;
+                top: 300px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <h2>My BankApp</h2>
+            
+            <h4>dashboard</h4>
+
+            <a href="/customer-dashboard">home</a>
+            <a href="/transfer">transfer</a>
+            <a href="/transaction">transaction</a>
+            <a href="/customer-logout">logout</a>
+            <hr>
+            
+            
+            
+            <aside>
+                <img src="data:public/upload/<%=customer.passport.contentType%>;base64,<%- customer.passport.data.toString('base64')%>" alt="profile" width="200" height="200"><br>
+                <p><%- customer.fname + " - " + customer.lname %></p>
+            </aside>
+            
+            <article>
+                <p>BVN: <%- customer.bvn%></p>    
+                <p>Acc Number: <%- customer.accNum%></p>
+                <p>Acc Type: <%- customer.accType %></p>
+                <p>Acc Ball: <%- customer.cbal %></p>
+
+            </article>
+            <main>
+                <% if(success != 'undefined') { %>
+                <p style="color: green"> <%- success %> </p>
+            <% } %>
+                
+            <% if(er_msg != 'undefined'){ %>
+                <p style="color: red"> <%= er_msg %> </p>
+            <% } %>
+            </main>
+            <container>
+                <h5>MyBankApp &copy; home</h5>
+            </container>
+                
+        </section>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color: black;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 75%;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            container{
+                width: 50%;
+                position: fixed;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            
+            <h2>MyBankApp</h2>
+            <h4>transaction</h4>
+
+            <a href="/customer-dashboard">home</a>
+            <a href="/transfer">transfer</a>
+            <a href="/transaction">transaction</a>
+            <a href="/customer-logout">logout</a>
+            <hr>            
+            
+           <table border="1" align="center" style="margin: auto; padding: auto;">
+               <tr>
+                   <td>Sender Name</td>
+                   <td>Recipient Name</td>
+                   <td>Type</td>
+                   <td>Amount</td>
+                   <td>Date</td>
+               </tr>
+               <tr>
+                    <% customers.forEach(function(customer){ %>
+                        <td> <%-customer.sender_name %> </td>
+                        <td> <%-customer.recipient_name %> </td>
+                        <td> <%-customer.type %> </td>
+                        <td> <%-customer.transaction_amt %> </td>
+                        <td> <%-customer.date %> </td>
+               </tr>
+                    <%})%>
+           </table>
+            <container>
+                <h5>MyBankApp &copy; transactions</h5>
+            </container>
+                
+        </section>
+    </body>
+</html>

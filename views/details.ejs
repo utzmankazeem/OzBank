@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color: black;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 500px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            aside{
+                width: 30%;
+                border-radius: 30px;
+                top: 150px;
+                left: 20px;
+                position: absolute;
+            }
+            article{
+                width: 50%;
+                background-color:sienna;
+                border-radius: 5px;
+                padding: 5px;
+                top: 150px;
+                right: 20px;
+                position: absolute;
+            }
+            main{
+                width: 50%;
+                background-color:sienna;
+                border-radius: 5px;
+                padding: 5px;
+                top: 300px;
+                right: 20px;
+                position: absolute;
+            }
+            container{
+                width: 50%;
+                top: 300px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <p>Banker_email: <strong> <%- a_email %> </strong> </p>
+            <p>User: <strong> <%- a_id %> </strong></p>
+            <p>Admin: <i> <%- a_name %> </i></p>
+            
+            <%if(success != 'undefined'){%>
+                    <p style="color: green"><%= success %></p>
+            <%}%>
+            <%if(er_msg != 'undefined'){%>
+                    <p style="color: red"><%= er_msg %></p>
+            <%}%>
+
+            <a href="/dashboard">home</a>
+            <a href="/addcustomer">addcustomer</a>
+            <a href="/viewcustomer">viewcustomer</a>
+            <a href="/logout">logout</a>
+            <hr>            
+            
+            
+            <aside>
+<img src="data:public/upload/<%=details.passport.contentType%>;base64,<%- details.passport.data.toString('base64')%>" alt="profile" width="200" height="200">
+                <br>
+                <p><%- details.fname + " - " + details.lname %></p>
+            </aside>
+            
+            <article>
+                <table border="0" align="center">
+                    <tr>
+                        <td>Gender:</td>
+                        <td><%- details.sex %></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile:</td>
+                        <td><%- details.mobile %></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><%- details.email %></td>
+                    </tr>
+                    <tr>
+                        <td>BVN:</td>
+                        <td><%- details.bvn%></td>
+                    </tr>
+                    <tr>
+                        <td>Acc Number:</td>
+                        <td><%- details.accNum%></td>
+                    </tr>
+                    <tr>
+                        <td>Acc Type:</td>
+                        <td><%- details.accType %></td>
+                    </tr>
+                    <tr>
+                        <td>Account Bal:</td>
+                        <td><%- details.cbal %></td>
+                    </tr>
+                </table>
+            </article>
+            <main>
+                <table border="0" align="center">
+                    <tr>
+                        <td>Edit customer: </td>
+                        <td><a href="/edit/<%- details._id %>">edit</a></td>
+                    </tr>
+                    <tr>
+                        <td>Delete customer: </td>
+                        <td><a href="/delete/<%- details._id %>">delete</a></td>
+                    </tr>
+                </table>
+            </main>
+            <container>
+                <h5>MyBankApp &copy; customer details</h5>
+            </container>
+                
+        </section>
+    </body>
+</html>

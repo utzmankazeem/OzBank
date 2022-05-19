@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color: black;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 500px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            aside{
+                width: 40%;
+                border-radius: 30px;
+                top: 150px;
+                left: 20px;
+                position: absolute;
+            }
+            article{
+                width: 40%;
+                background-color:sienna;
+                border-radius: 5px;
+                padding: 5px;
+                top: 165px;
+                right: 30px;
+                position: absolute;
+            }
+            main{
+                width: 40%;
+                border-radius: 5px;
+                padding: 5px;
+                top: 260px;
+                right: 30px;
+                position: absolute;
+            }
+            container{
+                width: 50%;
+                top: 300px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <h2>My BankApp</h2>
+
+            <h4>transfer</h4>
+
+            <a href="/customer-dashboard">home</a>
+            <a href="/transfer">transfer</a>
+            <a href="/transaction">transaction</a>
+            <a href="/customer-logout">logout</a>
+            <hr>
+            
+            
+            
+            <aside>
+                <form action="/transfer" method="post">
+                    <input type="hidden" name="name" value="<%- customer.fname +' '+ customer.lname %>"></p>
+                    <p>Sender Acc Number <input type="number" name="senders_accnum" value="<%- customer.accNum %>"></p>
+                    <p>Reciever Acc Number <input type="number" name="receivers_accnum"></p>
+                    <% let acc= ["Savings", "Current", "Fixed"] %>
+                    <p>Acc Type <select name="type">
+                        <option value="">accout type</option>
+                    <% acc.forEach(function(type){%> 
+                        <option value="<%-type%>"><%-type%></option>
+                    <%})%>
+                    </select> 
+                    </p>
+                    
+                    <p>Transfer Amount <input type="number" name="amount"></p>
+                    <p><input type="submit" value="transfer"></p>
+                </form>
+            </aside>
+            
+            <article>
+                <table border="0" align="center">
+                    <tr>
+                        <td>Account Name:</td>
+                        <td><%- customer.fname + "  " + customer.lname %></td>
+                    </tr>
+                    <tr>
+                        <td>Account Number:</td>
+                        <td><%- customer.accNum%></td>
+                    </tr>
+                    <tr>
+                        <td>Account Balance:</td>
+                        <td><%- customer.cbal %></td>
+                    </tr>
+                </table>
+            </article>
+                <main>
+                    <%if(typeof errors != 'undefined'){%> 
+                        <% errors.forEach(function(error){%> 
+                        <p style="color:rgb(39, 6, 6) ;"><%- error.msg %></p>
+                        <%}) %>
+                    <%}%>
+                    <% if(success != 'undefined') { %>
+                        <p style="color:rgb(39, 6, 6) ;"> <%- success %> </p>
+                    <% } %>
+                    <% if(er_msg != 'undefined'){ %>
+                        <p style="color: rgb(39, 6, 6) ;"> <%- er_msg %> </p>
+                    <% } %>
+                </main>
+            <container>
+                <h5>MyBankApp &copy; transfer</h5>
+            </container>
+                
+        </section>
+    </body>
+</html>

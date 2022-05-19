@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color:blanchedalmond;
+                border: 2px salmon;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 580px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            container{
+                border-radius: 5px;
+                padding: 5px;
+                top: 50px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section>
+            <p>Banker_email: <strong> <%- a_email %> </strong> </p>
+            <p>User: <strong> <%- a_id %> </strong></p>
+
+            <p>Admin: <i> <%- a_name %> </i></p>
+            <a href="/dashboard">home</a>
+            <a href="/addcustomer">addcustomer</a>
+            <a href="/viewcustomer">viewcustomer</a>
+            <a href="/logout">logout</a>
+            <hr>
+            
+            <h4>MyBankApp: <i>Add customer</i> </h4>
+            <%if(typeof errors != 'undefined'){%>
+                <% errors.forEach(function(error){ %>
+                    <h5 style="color: red"><%= error.msg %></h5>
+                <%})%>
+            <%}%>
+            <%if(success != 'undefined'){%>
+                    <p style="color: green"><%= success %></p>
+            <%}%>
+            <%if(er_msg != 'undefined'){%>
+                    <p style="color: red"><%= er_msg %></p>
+            <%}%>
+            <form action="/addcustomer" enctype="multipart/form-data" method="post">
+                <p>Firstname: <input type="text" name="fname" value="<%= typeof fname != 'undefined' ? fname : '' %>"></p>
+                <p>Lastname: <input type="text" name="lname" value="<%= typeof lname != 'undefined' ? lname : '' %>"></p>
+                <p>Mobile: <input type="number" name="mobile" value="<%= typeof mobile != 'undefined' ? mobile : '' %>"></p>
+                <p>Email: <input type="text" name="email" value="<%= typeof email != 'undefined' ? email : '' %>"></p>
+                <p>Sex: Male<input type="radio" name="sex" value="Male"
+                    <% if(typeof sex != 'undefined' && sex == "Male"){%> checked <%}%>>
+                        Female<input type="radio" name="sex" value="Female"
+                    <% if(typeof sex != 'undefined' && sex == "Female"){%> checked <%}%>>
+                </p>
+                <p>Bvn: <input type="number" name="bvn" value="<%= typeof bvn != 'undefined' ? bvn : '' %>"></p>
+                <p>Passport: <input type="file" name="passport" value="<%= typeof passport != 'undefined' ? passport : '' %>"></p>
+                <p>Account Type: Savings<input type="radio" name="accType" value="Savings" 
+                    <% if(typeof accType != 'undefined' && accType == 'Savings'){%> checked <%}%>>
+                                 Current<input type="radio" name="accType" value="Current" 
+                    <% if(typeof accType != 'undefined' && accType == 'Current'){%> checked <%}%>>
+                                 Fixed<input type="radio" name="accType" value="Fixed" 
+                    <% if(typeof accType != 'undefined' && accType == 'Fixed'){%> checked <%}%>>
+                </p>
+                <P>Opening Balance:<input type="number" name="obal" value="<%= typeof obal != 'undefined' ? obal : '' %>"></P>
+                <p>Password: <input type="text" name="password" value="<%= typeof password != 'undefined' ? password : '' %>"></p>
+                <p><input type="submit" value="add customer"></p>
+            </form>
+        </section>
+            
+    </body>
+</html>

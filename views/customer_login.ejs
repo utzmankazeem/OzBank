@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Bank</title>
+        <style type="text/css">
+            body{
+                background-color: rgb(98, 94, 100);
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            a{
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+            a:hover{
+                background-color: black;
+            }
+            section{
+                border: 5px solid #583344;
+                width: 50%;
+                height: 500px;
+                position: relative;
+                text-align: center;
+                font-size: 15px;
+                margin: 5% auto;
+                color: burlywood;
+            }
+            container{
+                border-radius: 5px;
+                padding: 5px;
+                top: 120px;
+                position: relative;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <section>
+            <container>
+             
+            <h2>My BankApp</h2>
+            
+            <h4>Login</h4>
+            <form action="/customer" method="post">
+
+                <p>Email: <input type="text" name="email"
+                    value="<%= typeof email != 'undefined' ? email : '' %>"></p>
+                <p>Password: <input type="text" name="password"
+                    value="<%= typeof password != 'undefined' ? password : '' %>"></p>
+                
+                <input type="submit" value="login">
+                
+                <% if(success != 'undefined') { %>
+                    <p style="color: green"> <%- success %> </p>
+                <% } %>
+                    
+                <% if(er_msg != 'undefined'){ %>
+                    <p style="color: red"> <%= er_msg %> </p>
+                <% } %>
+            </form>    
+            </container>
+        </section>
+    </body>
+</html>
