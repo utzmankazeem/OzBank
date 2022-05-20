@@ -70,7 +70,7 @@
                     <% if(typeof sex != 'undefined' && sex == "Female"){%> checked <%}%>>
                 </p>
                 <p>Bvn: <input type="number" name="bvn" value="<%= typeof bvn != 'undefined' ? bvn : '' %>"></p>
-                <p>Passport: <input type="file" name="passport" value="<%= typeof passport != 'undefined' ? passport : '' %>"></p>
+                <p>Passport <sub>must be under 1mb</sub> :<input type="file" name="passport" value="<%= typeof passport != 'undefined' ? passport : '' %>"></p>
                 <p>Account Type: Savings<input type="radio" name="accType" value="Savings" 
                     <% if(typeof accType != 'undefined' && accType == 'Savings'){%> checked <%}%>>
                                  Current<input type="radio" name="accType" value="Current" 
