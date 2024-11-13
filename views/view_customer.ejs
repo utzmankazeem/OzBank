@@ -1,75 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Online Bank</title>
-        <style type="text/css">
-            body{
-                background-color: rgb(98, 94, 100);
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
-            a{
-                text-decoration: none;
-                letter-spacing: 1px;
-            }
-            a:hover{
-                background-color:blanchedalmond;
-                border: 2px salmon;
-            }
-            section{
-                border: 5px solid #583344;
-                width: 50%;
-                height: 500px;
-                position: relative;
-                text-align: center;
-                font-size: 15px;
-                margin: 5% auto;
-                color: burlywood;
-            }
-
-        </style>
+        <title>Oz | Viewcustomer</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     </head>
     <body>
             
         <section>
-            <p>Banker_email: <strong> <%- a_email %> </strong> </p>
-            <p>User: <strong> <%- a_id %> </strong></p>
-
-            <h1>Admin: <i> <%- a_name %> </i></h1>
-            <a href="/dashboard">home</a>
-            <a href="/addcustomer">addcustomer</a>
-            <a href="/viewcustomer">viewcustomer</a>
-            <a href="/logout">logout</a>
-            <hr>
+            <header>
+                <h2>oz🏦</h2>
+                <a href="/dashboard">home</a>
+                <a href="/addcustomer">addcustomer</a>
+                <a href="/viewcustomer">viewcustomer</a>
+                <a href="/logout">logout</a>
+            </header>
             
-            <h2>MyBankApp</h2>
-            <h4>View customer</h4>
-            
-            <% if(success != 'undefined') { %>
-                <p style="color:seashell"> <%- success %> </p>
-            <% } %>
-                
-            <% if(er_msg != 'undefined'){ %>
-                <p style="color: red"> <%= er_msg %> </p>
-            <% } %>
-
+           <main>
+               
+               
+               
            <table border="1" align="center">
                <tr>
-                   <td>Name</td>
-                   <td>Mobile</td>
-                   <td>Email</td>
-                   <td>Gender</td>
-                   <td>Details</td>
+                   <th>Name</th>
+                   <th>Mobile</th>
+                   <th>Email</th>
+                   <th>Gender</th>
+                   <th>Details</th>
                </tr>
                <tr>
-                   <% customers.forEach(function(customer){%>
+                   <% customers.map((customer)=>{%>
                         <td> <%-customer.fname + "-" + customer.lname %> </td>
                         <td> <%-customer.mobile %> </td>
                         <td> <%-customer.email %> </td>
                         <td> <%-customer.sex %> </td>
-                        <td> <a href="/details/<%-customer._id%>">more details</a> </td>
+                        <td> <a href="/details/<%-customer._id%>">more</a> </td>
                </tr>
                <%})%>
+               <tr style="border: none;">
+                <td colspan="5" style="text-align: center;">
+                  <% if(success != 'undefined') { %>
+                   <p style="color:seashell"> <%- success %> </p>
+               <% } %>
+                   
+               <% if(errMsg != 'undefined'){ %>
+                   <p style="color: red"> <%= errMsg %> </p>
+               <% } %>  
+                </td>
+                
+               </tr>
            </table>
+        </main>
+        <footer>
+            <small>
+                ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
+            </small>
+        </footer>
         </section>
             
     </body>

@@ -1,65 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Online Bank</title>
-        <style type="text/css">
-            body{
-                background-color: rgb(98, 94, 100);
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
-            a{
-                text-decoration: none;
-                letter-spacing: 1px;
-            }
-            a:hover{
-                background-color: black;
-            }
-            section{
-                border: 5px solid #583344;
-                width: 50%;
-                height: 500px;
-                position: relative;
-                text-align: center;
-                font-size: 15px;
-                margin: 5% auto;
-                color: burlywood;
-            }
-            container{
-                border-radius: 5px;
-                padding: 5px;
-                top: 120px;
-                position: relative;
-                text-align: center;
-            }
-
-        </style>
+        <title>Oz | Customer</title>
+        <link rel="stylesheet" href="css/customStyle.css">
+        <link rel= "shortcut icon" href="img/favicon.png" type="image/x-icon">
     </head>
     <body>
 
         <section>
-            <container>
-             
-            <h2>My BankApp</h2>
-            
-            <h4>Login</h4>
-            <form action="/customer" method="post">
-
-                <p>Email: <input type="text" name="email"
-                    value="<%= typeof email != 'undefined' ? email : '' %>"></p>
-                <p>Password: <input type="text" name="password"
-                    value="<%= typeof password != 'undefined' ? password : '' %>"></p>
-                
-                <input type="submit" value="login">
-                
-                <% if(success != 'undefined') { %>
-                    <p style="color: green"> <%- success %> </p>
-                <% } %>
+            <header>
+                <h2>Oz🏦</h2>
+                <a href="/customer-dashboard">home</a>
+                <a href="/transfer">transfer</a>
+                <a href="/transaction">transaction</a>
+                <a href="/customer-logout">logout</a> 
+            </header>
+            <main>
+                <form action="/customer" method="post">
+                    <% if(success != 'undefined') { %>
+                    <p style="color: #fff"> <%- success %> </p>
+                    <% } %>
                     
-                <% if(er_msg != 'undefined'){ %>
-                    <p style="color: red"> <%= er_msg %> </p>
-                <% } %>
-            </form>    
-            </container>
+                    <% if(errMsg != 'undefined'){ %>
+                        <p style="color: red"> <%= errMsg %> </p>
+                        <% } %>
+                        
+                        <label>Email: </label>
+                            <input type="text" name="email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>"></p>
+                        <label>Password: </label>
+                            <input type="text" name="password"
+                            value="<%= typeof password != 'undefined' ? password : '' %>"></p>
+                        
+                        <button type="submit"> Login </button>   
+                        <button type="reset"> Reset </button>   
+                </form>    
+            </main>
+            <footer>
+                <p>©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.</p>
+                <div><a href="http:/"><button>Admin</button></a></div>
+            </footer>
         </section>
     </body>
 </html>

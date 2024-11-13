@@ -1,83 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Online Bank</title>
-        <style type="text/css">
-            body{
-                background-color: rgb(98, 94, 100);
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
-            a{
-                text-decoration: none;
-                letter-spacing: 1px;
-            }
-            a:hover{
-                background-color:blanchedalmond;
-                border: 2px salmon;
-            }
-            section{
-                border: 5px solid #583344;
-                width: 50%;
-                height: 550px;
-                position: relative;
-                text-align: center;
-                font-size: 15px;
-                margin: 5% auto;
-                color: burlywood;
-            }
-            container{
-                border-radius: 5px;
-                padding: 5px;
-                top: 50px;
-                position: relative;
-                text-align: center;
-            }
-        </style>
+        <title>Oz | Edit</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     </head>
     <body>
         <section>
-            <p>Banker_email: <strong> <%- a_email %> </strong> </p>
-            <p>User: <strong> <%- a_id %> </strong></p>
-            <p>Admin: <i> <%- a_name %> </i></p>
-            <a href="/dashboard">home</a>
-            <a href="/addcustomer">addcustomer</a>
-            <a href="/viewcustomer">viewcustomer</a>
-            <a href="/logout">logout</a>
-            <hr>
-            <h4>MyBankApp: <i>edit customer</i> </h4>
-            <%if(typeof errors != 'undefined'){%>
-                <% errors.forEach(function(error){ %>
-                    <h5 style="color: red"><%= error.msg %></h5>
-                <%})%>
-            <%}%>
-            <%if(success != 'undefined'){%>
-                    <p style="color: green"><%= success %></p>
-            <%}%>
-            <%if(er_msg != 'undefined'){%>
-                    <p style="color: red"><%= er_msg %></p>
-            <%}%>
-            <form action="/edit/<%- details._id %>" method="post">
-                <p>Firstname: <input type="text" name="fname" value="<%= details.fname %>"></p>
-                <p>Lastname: <input type="text" name="lname" value="<%= details.lname %>"></p>
-                <p>Mobile: <input type="number" name="mobile" value="<%= details.mobile %>"></p>
-                <p>Email: <input type="text" name="email" value="<%= details.email %>"></p>
-                <p>Sex: Male<input type="radio" name="sex" value="Male"
-                    <% if(typeof sex != 'undefined' && sex == check){%> checked <%}%>>
-                        Female<input type="radio" name="sex" value="Female"
-                    <% if(typeof sex != 'undefined' && sex == check){%> checked <%}%>>
-                </p>
-                <p>Bvn: <input type="number" name="bvn" value="<%= details.bvn %>"></p>
-                <!-- <p>Passport: <input type="file" name="passport" value="<%= details.passport %>"></p> -->
-                <p>Account Type: Savings<input type="radio" name="accType" value="Savings" 
-                    <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
-                                 Current<input type="radio" name="accType" value="Current" 
-                    <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
-                                 Fixed<input type="radio" name="accType" value="Fixed" 
-                    <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
-                </p>
-                <P>Current Balance:<input type="number" name="obal" value="<%= details.cbal %>"></P>
-                <p><input type="submit" value="update customer"></p>
-            </form>
+            <header>
+                <h2>oz🏦</h2>
+                <a href="/dashboard">home</a>
+                <a href="/addcustomer">addcustomer</a>
+                <a href="/viewcustomer">viewcustomer</a>
+                <a href="/logout">logout</a>
+            </header> 
+            <main>
+                <form action="/edit/<%= details._id %>" method="post">
+                    <%if(typeof errors != 'undefined'){%>
+                        <% errors.map((error)=>{ %>
+                            <h5 style="color: red"><%= error.msg %></h5>
+                        <%})%>
+                    <%}%>
+                    <%if(success != 'undefined'){%>
+                            <p style="color: green"><%= success %>
+                    <%}%>
+                    <%if(errMsg != 'undefined'){%>
+                            <p style="color: red"><%= errMsg %></p>
+                    <%}%>
+                    <p>
+                    <label for="">Firstname: </label><input type="text" name="fname" value="<%= details.fname %>">
+                    <label for="">Lastname:</label> <input type="text" name="lname" value="<%= details.lname %>">
+                    <label for="">Mobile:</label> <input type="number" name="mobile" value="<%= details.mobile %>">
+                    <label for="">Email:</label> <input type="text" name="email" value="<%= details.email %>">
+                    <label for="">Sex:</label> Male<input type="radio" name="sex" value="Male"
+                        <% if(typeof sex != 'undefined' && sex == checked){%> checked <%}%>>
+                            Female<input type="radio" name="sex" value="Female"
+                        <% if(typeof sex != 'undefined' && sex == checked){%> checked <%}%>>
+                    
+                    <label for="">Bvn:</label> <input type="number" name="bvn" value="<%= details.bvn %>">
+                    <!-- <label for=""></label>Passport: <input type="file" name="passport" value="<%= details.passport %>"> -->
+                    <label for="">Account Type:</label> Savings<input type="radio" name="accType" value="Savings" 
+                        <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
+                                    Current<input type="radio" name="accType" value="Current" 
+                        <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
+                                    Fixed<input type="radio" name="accType" value="Fixed" 
+                        <% if(typeof accType != 'undefined' && accType == check){%> checked <%}%>>
+                    
+                    <label for="">Current Balance:</label><input type="number" name="obal" value="<%= details.cbal %>">
+                    <label for=""><span style="text-align: center;"><button type="submit"> Update </button></span></label>
+                    </P>
+                </form>
+        </main>
+        <footer>
+            <small>
+                ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
+            </small>
+        </footer>
         </section>
     </body>
 </html>

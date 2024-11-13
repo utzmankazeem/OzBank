@@ -1,21 +1,17 @@
-const mongoose = require("mongoose");
-
-const customerSchema = {
+import mongoose from "mongoose"
+const customerSchema = ({
         fname: {
             type: String,
             required: true
         },
-
         lname: {
             type: String,
             required: true
         },
-
         mobile: {
             type: Number,
-            required: true
+            required:[true, 'your mobile number']
         },
-
         email: {
             type: String,
             required: true
@@ -28,7 +24,7 @@ const customerSchema = {
 
         bvn: {
             type: Number,
-            required: true
+            required: [true, 'must be 10 numbers']
         },
         
         passport: {
@@ -38,7 +34,8 @@ const customerSchema = {
 
         accType: {
             type: String,
-            required: true
+            required: true,
+            enum:["Savings", "Current", "Fixed"]
         },
 
         accNum: {
@@ -60,12 +57,12 @@ const customerSchema = {
             type: String,
             required: true
         },
-
         username: {
             type: String,
             required: true
         }
-}
+})
 
-const Customer = mongoose.model("customer", customerSchema);
-module.exports = Customer; 
+const Customer = mongoose.model("Customer", customerSchema);
+export default Customer
+

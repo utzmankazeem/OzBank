@@ -1,55 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Online Bank</title>
-        <style type="text/css">
-            body{
-                background-color: rgb(98, 94, 100);
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
-            a{
-                text-decoration: none;
-                letter-spacing: 1px;
-            }
-            a:hover{
-                background-color:blanchedalmond;
-                border: 2px salmon;
-            }
-            section{
-                border: 5px solid #583344;
-                width: 50%;
-                height: 500px;
-                position: relative;
-                text-align: center;
-                font-size: 15px;
-                margin: 5% auto;
-                color: burlywood;
-            }
-            container{
-                border-radius: 5px;
-                padding: 5px;
-                top: 70px;
-                position: relative;
-                text-align: center;
-            }
-
-        </style>
+        <title>Oz | Dashboard</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     </head>
     <body>
         <section>
-            <container>
-                <h2>MyBankApp</h2>
-
-            <p>Banker_email: <strong> <%- a_email %> </strong> </p>
-            <p>User: <strong> <%- a_id %> </strong></p>
-
-            <h1>Admin: <i> <%- a_name %> </i></h1>
-            <p><a href="/dashboard">home</a></p>
-            <p><a href="/addcustomer">addcustomer</a></p>
-            <p><a href="/viewcustomer">viewcustomer</a></p>
-            <p><a href="/logout">logout</a></p>
-            </container>
-        </section>
+            <header>
+                <h2>oz🏦</h2>
+                <a href="/dashboard">home</a>
+            <a href="/addcustomer">addcustomer</a>
+            <a href="/viewcustomer">viewcustomer</a>
+            <a href="/logout">logout</a>
+            </header>
             
+            <main>
+                <p>Banker_email: <strong> <%- a_email %> </strong> <br>
+                User: <strong> <%- a_id %> </strong> <br>
+                Admin: <strong><%= a_name %>   </strong></p>
+            </main>
+            <footer>
+                <small>
+                    ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
+                </small>
+            </footer>
+        </section>
     </body>
 </html>

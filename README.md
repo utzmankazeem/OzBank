@@ -1,3 +1,11 @@
+# Upgrade & Refactor
+
+using ES6, module pattern & MVC Structure Design
+the codebase has been refactored from common js to ES6, 
+whilst using the async/await functions with try and catch pattern 
+for code readability and advance techniques
+Design Structure from primary node pattern to Model View Controller(MVC)
+
 # A banking App 
 
 An app to perform banking transaction seamlessly. 
@@ -6,7 +14,7 @@ records of transfers are kept in both account holders transfer record.
 
 # Usage 
 
-Register as a banker..
+Register as a banker.. Backend for Admin Managers
 create a customer on the banking platform
 customer details and access are generated
 customer login from the route on the homepage
@@ -38,10 +46,15 @@ run npm install to install all dependencies
 
 run npm start to launch app
 
+# Languages
 #Nodejs 
 #Ejs 
-#Javascript 
-#Bootstrap 
-#CSS
+#ES6
+#MVC
+#FullStack
 #MongoDB
+#Javascript 
+#Async/Await
+#Try/Catch
+#CSS
 #HTML

@@ -1,40 +1,38 @@
-const      express = require("express");
-           flash = require("connect-flash");
-           mongoose = require("mongoose");
-           session = require("express-session");
-           app = express();
-           port = 1010;
+import express from 'express'
+import flash from 'connect-flash'
+import session from 'express-session'
+import connectDB from './config/key.js'
+import home from './routes/index.js'
+import bank from './routes/banking.js'
+const app = express()
+const PORT = 9090
 
-        //DB CONFIG
-        const db = require("./config/key").mongoURI;
-        mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
+// DBconn
+connectDB();
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.static('public'));
 
-app.set("view engine", "ejs");
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-app.use(express.static("public"));
-//app.use(express.static("upload"));
+// Session Midlware
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}))
 
+// Flash Msgs
+app.use(flash());
 
-        //EXPRESS-SESSION MIDDLEWARE
-        app.use(session({
-            secret: 'secret',
-            saveUninitialized: true,
-            resave: true
-        }));
+// Global Vars
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.errMsg = req.flash('er_msg');
+    next();
+})
 
-        //CONNECT FLASH
-        app.use(flash());
+// Routes
+app.use('/', home)
+app.use('/', bank)
 
-        //GLOBAL VARS
-        app.use((req, res, next) => {
-            res.locals.success = req.flash('success');
-            res.locals.er_msg = req.flash('er_msg');
-            next();
-        });
-
-        //Routes Setup
-        app.use('/', require('./routes/index'));
-        app.use('/', require('./routes/banking'));
-    
-    app.listen(process.env.PORT || port, () => console.log('bank server started'));
+app.listen(process.env.PORT || PORT, ()=> console.log(`serving on http://localhost:${PORT}`))

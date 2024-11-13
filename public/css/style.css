@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section {
+    display: grid;
+    height: 100vh;
+    width:auto;
+    margin: auto;
+    grid-template-rows: 10vh auto 10vh;
+    gap: 10px;
+    background-color: rgb(191, 99, 199);
+}
+header, main, footer{
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    background-color: rgb(187, 140, 240);
+       
+        & ul, li {
+            list-style-type: none;
+            display: flex;
+            padding: 5px;
+        }
+        & a {
+            display: inline-block;
+            border: none;
+            color: black;
+            text-decoration: none;
+        } 
+
+        & a:hover  {
+            padding: 5px;
+            background-color: rgb(191, 99, 199);
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        & button {
+            display: block;
+            background-color: orangered;
+            height: 30px;
+            padding: 5px;
+            color: #fff;
+            border: none;
+        }
+        & button:hover{
+            background-color: orangered;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+}
+
+header {
+    justify-content:space-evenly;
+}
+main {
+    align-items: center;
+    justify-content: center;
+    
+    & form {
+        & p {
+            text-align: center;
+        }
+
+        & label{
+            display: grid;
+            align-items: center;
+        }
+    
+        & input {
+            margin-bottom: 5px;
+        }
+        & button {
+            display: inline-block;
+            background-color: rgb(167, 49, 194);
+            height: 30px;
+            width: 60px;
+            border: none;
+        }
+        & button:hover{
+            padding: 5px;
+            text-transform: uppercase;
+        }
+    }
+
+    & table {
+        
+        tr {
+            padding: 3px;
+            border: 2px solid white;       
+        }
+        & tr:hover{
+            font-size: large;
+            cursor: pointer;
+        }
+        & button:hover{
+            padding: 5px;
+            background-color: none;
+            text-transform: uppercase;
+        }
+        & button {
+            display: inline-block;
+            height: 30px;
+            width: 60px;
+            border: none;
+        }
+    }
+    & article {
+        margin: 10px;
+        height: 30vh;
+        border: 1px solid rgb(191, 99, 199);
+    }
+}        
+
+footer {
+    align-items: center;
+    justify-content: center;
+}

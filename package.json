@@ -1,16 +1,18 @@
 {
-  "name": "bank-online",
+  "name": "Oz Bank",
   "version": "1.0.0",
-  "description": "bank app",
+  "description": "banking app",
   "main": "bank.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node bank.js"
+    "start":"node bank.js",
+    "dev": "nodemon bank"
   },
   "author": "kazeem usman",
   "license": "ISC",
   "engines": {
-    "node": "16.13.0"
+    "node": "18.17.1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

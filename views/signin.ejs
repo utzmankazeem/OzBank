@@ -1,67 +1,48 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Online Bank</title>
-        <style type="text/css">
-            body{
-                background-color: rgb(98, 94, 100);
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
-            a{
-                text-decoration: none;
-                letter-spacing: 1px;
-            }
-            a:hover{
-                background-color:blanchedalmond;
-                border: 2px salmon;
-            }
-            section{
-                border: 5px solid #583344;
-                width: 50%;
-                height: 500px;
-                position: relative;
-                text-align: center;
-                font-size: 15px;
-                margin: 5% auto;
-                color: burlywood;
-            }
-            container{
-                border-radius: 5px;
-                padding: 5px;
-                top: 70px;
-                position: relative;
-                text-align: center;
-            }
-
-        </style>
-    </head>
-    <body>
-        <section>
-            <container>
-                <h2>My BankApp</h2>
-                <p><a href="/">bank app</a></p>
-                <p><a href="/signup">signup page</a></p>
-
-            
-            <h4>Banker Sign In</h4>
-            <form action="/signin" method="post">
-
-            <% if(success != 'undefined') { %>
-                <p style="color: white"> <%- success %> </p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <section>
+        <header>
+            <h2>oz🏦</h2>
+            <a href="/signup">register</a>
+            <a href="/signin">login</a>
+            <a class="cta" href="/customer"> <button>TheBank</button></a>
+        </header>
+        <main>
+        <form action="signin" method="post">
+            <% if(success != 'undefined'){%>
+                <p style="color: greenyellow;"><%- success %></p>
+            <% }%>
+            <% if(errMsg != 'undefined'){%>
+                <p style="color: red;"> <%- errMsg %> </p>
             <% } %>
-                
-            <% if(er_msg != 'undefined'){ %>
-                <p style="color: red"> <%= er_msg %> </p>
-            <% } %>
-
-            <p>Username: <input type="text" name="username"
-                    value="<%= typeof username != 'undefined' ? username : '' %>"></p>
-                <p>Password: <input type="text" name="password"
-                    value="<%= typeof password != 'undefined' ? password : '' %>"></p>
-                
-                <input type="submit" value="click to submit">
-            </form>
-            </container>
-        </section>        
-    </body>
+        <p>
+            <label for="username">Username</label>
+            <input type="text" name="username" value="<%= typeof username != 'undefined' ? username : '' %>">
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="text" name="password" value="<%= typeof password != 'undefined' ? password : '' %>"> 
+        </p>
+        <p>
+            <button type="submit">submit</button>
+            <button type="reset">reset</button>
+        </p>
+    </form>
+</main>
+<footer>
+    <small>
+        ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
+    </small>
+</footer>
+</section>
+    
+</body>
 </html>
