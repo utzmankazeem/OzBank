@@ -1,3 +1,10 @@
+
+# A banking App 
+
+An app to perform banking transaction seamlessly. 
+The app allow account holders to perform transfers from one account to another. 
+records of transfers are kept in both account holders transfer record.
+
 # Upgrade & Refactor
 
 using ES6, module pattern & MVC Structure Design
@@ -6,12 +13,7 @@ whilst using the async/await functions with try and catch pattern
 for code readability and advance techniques
 Design Structure from primary node pattern to Model View Controller(MVC)
 
-# A banking App 
-
-An app to perform banking transaction seamlessly. 
-The app allow account holders to perform transfers from one account to another. 
-records of transfers are kept in both account holders transfer record.
-
+To see usage, check out the [web url](https://ozbank.onrender.com)
 # Usage 
 
 Register as a banker.. Backend for Admin Managers
@@ -37,7 +39,16 @@ deposit are made to open account with a balance
 customers can now access this account
 they can begin performing banking transactions
 
+# npm install
 
+run npm install to install all dependencies
+
+```ts
+    codeDEsign with : `ExpressJS`
+    refactored code to use : ES7
+    change functions to: async/await
+    proper usage of: try/catch in functions
+    refactored `vanillajs to EsModule`
 # npm install
 
 run npm install to install all dependencies
@@ -49,7 +60,7 @@ run npm start to launch app
 # Languages
 #Nodejs 
 #Ejs 
-#ES6
+#ES7
 #MVC
 #FullStack
 #MongoDB
