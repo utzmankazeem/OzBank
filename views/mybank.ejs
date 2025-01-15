@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oz | Admin</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-</head>
-<body>
-    <section>
-        <header>
-                    <h2>oz🏦</h2>
-                    <a href="/signup">register</a>
-                    <a href="/signin">login</a>
-                    <a href="/customer"> <button>TheBank</button></a>
-        </header>
+<% title= 'Admin'%>
+<%- include('layout/authHead.ejs')%>
 
         <main>
-            <h3>Oz-Bank ADMIN!</h3>
-            <p>welcome to the OZ bank portal</p>
+            <p>welcome to the OZbank network</p>
         </main>
 
-        <footer>
-                ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-        </footer>
-    </section>
-</body>
-</html>
+<%- include('layout/authFoot')%>

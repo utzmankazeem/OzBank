@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Home</title>
-        <link rel="stylesheet" href="css/customStyle.css">
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-        <section>
-            <header>
-               <h2>Oz🏦</h2>
-
-                <a href="/customer-dashboard">home</a>
-                <a href="/transfer">transfer</a>
-                <a href="/transaction">transaction</a>
-                <a href="/customer-logout">logout</a> 
-            </header>
-
+ <% title= 'Bank'%>
+ <%-include('layout/cusHeader')%>
             <main>
                 <aside>
                     <% if(success != 'undefined') { %>
@@ -36,10 +20,4 @@
                     <p>Acc Ball: <%- customer.cbal %></p>
                 </article>
             </main>
-
-            <footer>
-                ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-            </footer>
-        </section>
-    </body>
-</html>
+<%-include('layout/cusFoot')%>

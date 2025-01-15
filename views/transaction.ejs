@@ -30,7 +30,7 @@
                                 <td> <%-customer.recipient_name %> </td>
                                 <td> <%-customer.type %> </td>
                                 <td> <%-customer.transaction_amt %> </td>
-                                <td> <%-customer.date %></td>
+                                <td> <%-new Date(customer.date).toLocaleString() %></td>
                     </tr>
                             <%})%>
                 </table>

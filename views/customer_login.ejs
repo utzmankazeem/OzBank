@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Customer</title>
-        <link rel="stylesheet" href="css/customStyle.css">
-        <link rel= "shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-
-        <section>
-            <header>
-                <h2>Oz🏦</h2>
-                <a href="/customer-dashboard">home</a>
-                <a href="/transfer">transfer</a>
-                <a href="/transaction">transaction</a>
-                <a href="/customer-logout">logout</a> 
-            </header>
+<% title= 'customer'%>
+<%-include('layout/cusHeader')%>
             <main>
                 <form action="/customer" method="post">
                     <% if(success != 'undefined') { %>
@@ -36,10 +21,4 @@
                         <button type="reset"> Reset </button>   
                 </form>    
             </main>
-            <footer>
-                <p>©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.</p>
-                <div><a href="http:/"><button>Admin</button></a></div>
-            </footer>
-        </section>
-    </body>
-</html>
+<%-include('layout/cusFoot')%>

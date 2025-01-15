@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Viewcustomer</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-            
-        <section>
-            <header>
-                <h2>oz🏦</h2>
-                <a href="/dashboard">home</a>
-                <a href="/addcustomer">addcustomer</a>
-                <a href="/viewcustomer">viewcustomer</a>
-                <a href="/logout">logout</a>
-            </header>
-            
+<% title= 'Viewcustomer'%>
+<%-include('layout/rootHead')%>   
            <main>
                
                
@@ -51,12 +35,4 @@
                </tr>
            </table>
         </main>
-        <footer>
-            <small>
-                ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-            </small>
-        </footer>
-        </section>
-            
-    </body>
-</html>
+<%-include('layout/rootFoot')%>

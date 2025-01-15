@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Addcustomer</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-        <section>
-            <header>
-                <h2>oz🏦</h2>
-                <a href="/dashboard">home</a>
-            <a href="/addcustomer">addcustomer</a>
-            <a href="/viewcustomer">viewcustomer</a>
-            <a href="/logout">logout</a>
-            </header>
+<% title= 'Addcustomer'%>
+<%-include('layout/rootHead')%>
               
             <main>
                 <form action="/addcustomer" enctype="multipart/form-data" method="post">
@@ -53,11 +39,4 @@
                 </p>
                 </form>
             </main>
-            <footer>
-                <small>
-                    ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-                </small>
-            </footer>
-        </section>   
-    </body>
-</html>
+<%-include('layout/rootFoot')%>

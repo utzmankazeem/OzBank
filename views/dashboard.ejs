@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Dashboard</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-        <section>
-            <header>
-                <h2>oz🏦</h2>
-                <a href="/dashboard">home</a>
-            <a href="/addcustomer">addcustomer</a>
-            <a href="/viewcustomer">viewcustomer</a>
-            <a href="/logout">logout</a>
-            </header>
+<% title= 'Dashboard'%>
+<%-include('layout/rootHead')%>
             
             <main>
                 <p>Banker_email: <strong> <%- a_email %> </strong> <br>
                 User: <strong> <%- a_id %> </strong> <br>
                 Admin: <strong><%= a_name %>   </strong></p>
             </main>
-            <footer>
-                <small>
-                    ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-                </small>
-            </footer>
-        </section>
-    </body>
-</html>
+<%-include('layout/rootFoot')%>

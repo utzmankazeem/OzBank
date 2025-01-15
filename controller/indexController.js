@@ -225,7 +225,7 @@ export const viewCustomer = async (req, res) => {
             res.render("view_customer", { a_id, a_name, a_email, customers: customer });
         }
     } catch (error) {
-        req.flash("er_msg", "error getting customer list")
+        req.flash("er_msg", "No customer listed addnew customer")
         res.redirect("/addcustomer");
         throw error;
     }
@@ -233,13 +233,13 @@ export const viewCustomer = async (req, res) => {
 
 export const customerDetails = async (req, res) => {
     let a_id = req.session.admin_id, a_name = req.session.username, a_email = req.session.email;
-    const id = req.params.id;
+    const _id = req.params.id;
     try {
         if (!a_id || !a_name || !a_email) {
             req.flash("er_msg", "login to access app");
             res.redirect("/signin");
         }
-        const customer = await Customer.findById(id);
+        const customer = await Customer.findById(_id);
         if (customer) {
             res.render("details", { a_id, a_name, a_email, details: customer });
         }
@@ -252,13 +252,13 @@ export const customerDetails = async (req, res) => {
 
 export const getEdit = async (req, res) => {
     let a_id = req.session.admin_id, a_name = req.session.username, a_email = req.session.email;
-    const id = req.params.id;
+    const _id = req.params.id;
     try {
         if (!a_id || !a_name || !a_email) {
             req.flash("er_msg", "login to access app");
             res.redirect("/signin");
         }
-        const customer = await Customer.findById(id);
+        const customer = await Customer.findById(_id);
         if (customer) {
             res.render("edit", { a_id, a_name, a_email, details: customer });
         }
