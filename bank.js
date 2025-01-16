@@ -33,6 +33,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/', home)
-app.use('/', bank)
+app.use('/customer', bank)
 
 app.listen(process.env.PORT || PORT, ()=> console.log(`serving on http://localhost:${PORT}`))

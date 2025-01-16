@@ -1,5 +1,5 @@
 <% title= 'Details'%>
-<%-include('layout/rootHead')%>  
+<%-include('layout/rootHeader')%>  
             <main>
                     <aside>
                         <%if(success != 'undefined'){%>
@@ -8,7 +8,7 @@
                         <%if(errMsg != 'undefined'){%>
                                 <p style="color: red"><%= errMsg %></p>
                         <%}%>
-                        <img src="data:public/upload/<%=details.passport.contentType%>;base64,<%- details.passport.data.toString('base64')%>" alt="profile" width="200" height="200">
+                        <img src="data:public/upload/<%=details.passport.contentType%>;base64,<%- details.passport.data.toString('base64')%>" alt="profile" width="200" height="200" />
                         <br>
                         <p><%- details.fname + " - " + details.lname %></p>
                     </aside>
@@ -40,7 +40,7 @@
                                 <td><%= details.accType %></td>
                             </tr>
                             <tr>
-                                <td>Account Bal:</td>
+                                <td>Acc Bal:</td>
                                 <td><%= details.cbal %></td>
                             </tr>
                             

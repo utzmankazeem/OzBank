@@ -11,12 +11,12 @@ import {
 } from '../controller/bankController.js'
 
 //Login Route//
-router.route("/customer")
+router.route("/")
 .get(getCustomer)
 .post(postCustomer);
 
 //Dashboard Route//
-router.get("/customer-dashboard", custDashboard);
+router.get("/dashboard", custDashboard);
 
 //Transfer Route//
 router.route("/transfer")
@@ -27,6 +27,6 @@ router.route("/transfer")
 router.get("/transaction", getTransactions)
 
 // Logout //
-router.get("/customer-logout", custLogout);
+router.get("/logout", custLogout);
 
 export default router;

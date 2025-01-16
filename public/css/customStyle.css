@@ -39,16 +39,18 @@ header, main, footer{
         & a {
             display: inline-block;
             border: none;
-            color: black;
+            color: rgb(98, 94, 100);
+            padding: 5px;
+            border: 1px solid burlywood;;
         } 
 
         & a:hover  {
             cursor: pointer;
             padding: 5px;
-            background-color: rgb(98, 94, 100);;
+            background-color: rgb(98, 94, 100);
             text-transform: uppercase;
             color: burlywood;
-            border: 1px solid #583344;
+            
         }        
 }
 

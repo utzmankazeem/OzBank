@@ -25,21 +25,23 @@ header, main, footer{
         & a {
             display: inline-block;
             border-radius: 5px;
-            color: black;
+            padding: 5px;
+            background-color: black;
+            color: rgb(191, 99, 199);
             text-decoration: none;
+            text-transform: uppercase;
         } 
 
         & a:hover  {
             padding: 5px;
-            background-color: black;
-            color: rgb(191, 99, 199);
-            text-transform: uppercase;
+            background-color: rgb(191, 99, 199);
+            color: black;
             cursor: pointer;
         }
         & button {
             display: block;
             border-radius: 5px;
-            background-color: rgb(191, 99, 199);;
+            background-color: rgb(191, 99, 199);
             height: 30px;
             padding: 5px;
             border: none;
@@ -83,25 +85,32 @@ main {
             border: none;
         }
         & button:hover{
-            padding: 5px;
+            padding: 2px;
             text-transform: uppercase;
         }
     }
 
     & table {
-        
+        border-radius: 5px;
+        background-color: black;
+        color: rgb(191, 99, 199);
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
         tr {
-            padding: 3px;
-            border: 2px solid white;       
+            border: 1px solid white;
+
         }
         & tr:hover{
-            font-size: large;
             cursor: pointer;
         }
+        & a:hover  {
+            padding: 0px;
+        }
         & button:hover{
-            padding: 5px;
+            border:2px solid rgb(191, 99, 199);
             background-color: none;
-            text-transform: uppercase;
+            text-transform: none;
         }
         & button {
             display: inline-block;
@@ -110,10 +119,9 @@ main {
             border: none;
         }
     }
-    & article {
-        margin: 10px;
-        height: 30vh;
-        border: 1px solid rgb(191, 99, 199);
+    & article, aside {
+        margin: auto;
+        justify-content: center;
     }
 }        
 
@@ -123,10 +131,4 @@ footer {
     font-size: 0.7rem;
     position: relative;
     bottom: -0px;
-
-    & button {
-        height: 20px;
-        padding: 2px;
-        border: none;
-     }
 }

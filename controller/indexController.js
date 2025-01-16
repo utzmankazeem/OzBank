@@ -13,7 +13,6 @@ export const postSignup = async (req, res) => {
   const { username, email, pass1, pass2 } = req.body;
 
   let errors = [];
-
   // Validate form fields
   if (!username || !email || !pass1 || !pass2) {
     errors.push({ msg: "Some fields are missing" });
@@ -96,10 +95,10 @@ export const dashboard = async (req, res) => {
     try {
       if (!a_id || !a_name || !a_email) {
         req.flash("er_msg", "Incomplete session data. Please log in again.");
-        res.redirect("/signin");
-        return; // Ensure the function exits after redirection
+        return res.redirect("/signin");
+        // Ensure the function exits after redirection
     }else {
-            return  res.render("dashboard", { a_id, a_name, a_email });
+            return res.render("dashboard", { a_id, a_name, a_email });
         }
     } catch (error) {
         console.log(error);
@@ -148,8 +147,12 @@ export const postAddCustomer = async (req, res) => {
         data: fs.readFileSync("public/upload/" + req.file.filename),
       };
     }
+    const maxSize = 1 * 1024 * 1024;//1mb
     // Initialize error array
     let errors = [];
+    if (passport > maxSize) {
+      errors.push({ msg: "Please fill must be under 1mb" });
+    }
     if (
       !fname ||
       !lname ||

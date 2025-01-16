@@ -1,44 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Oz | Transactions</title>
-        <link rel="stylesheet" href="css/customStyle.css">
-        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-        <section>  
-            <header>
-                <h2>Oz🏦</h2>
- 
-                 <a href="/customer-dashboard">home</a>
-                 <a href="/transfer">transfer</a>
-                 <a href="/transaction">transaction</a>
-                 <a href="/customer-logout">logout</a> 
-             </header>
-             <main>           
-                <table border="1" align="center" style="margin: auto; padding: auto;">
-                    <tr class="active">
-                        <th>Sender</th>
-                        <th>Recipient</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                    </tr>
-                    <tr>
-                            <% customers.map((customer) =>{ %>
-                                <td> <%-customer.sender_name %> </td>
-                                <td> <%-customer.recipient_name %> </td>
-                                <td> <%-customer.type %> </td>
-                                <td> <%-customer.transaction_amt %> </td>
-                                <td> <%-new Date(customer.date).toLocaleString() %></td>
-                    </tr>
-                            <%})%>
-                </table>
-           </main>
-           <footer>
-            ©️ <script> document.write(new Date().getFullYear().toString()) </script> OzBank Plc.
-        </footer> 
-                
-        </section>
-    </body>
-</html>
+<% title= 'Transaction'%> 
+<%-include('layout/cusHeader')%>
+
+<main>
+  <table border="1" align="center" style="margin: auto; padding: auto">
+    <tr class="active">
+      <th>Sender</th>
+      <th>Recipient</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Transaction Date</th>
+    </tr>
+    <tr>
+      <% customers.map((customer) =>{ %>
+      <td><%-customer.sender_name %></td>
+      <td><%-customer.recipient_name %></td>
+      <td><%-customer.type %></td>
+      <td><%-customer.transaction_amt %></td>
+      <td><%-new Date(customer.date).toLocaleString() %></td>
+    </tr>
+    <%})%>
+  </table>
+</main>
+<%-include('layout/cusFoot')%>

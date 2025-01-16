@@ -23,8 +23,8 @@ export const postCustomer = async (req, res) => {
         }// If passwords match, set session
         req.session.cbal = foundCustomer.cbal;
         req.session.acnum = foundCustomer.accNum;
-        req.flash("success", "welcome to our Bank");
-        return res.redirect("/customer-dashboard");
+        req.flash("success", "welcome Back");
+        return res.redirect("/customer/dashboard");
     } catch (error) {
         console.log(error)
         req.flash("er_msg", "login to access app");
@@ -90,7 +90,7 @@ export const postTransfer = async (req, res) => {
             const acn = await Customer.findOne({ accNum: aN });
             if (!acn) {
                 req.flash("er_msg", "transaction error");
-                return res.redirect("/transfer");
+                return res.redirect("/customer/transfer");
             } else {
                 return res.render("transfer", {
             errors,cB,aN,customer: acn,receivers_accnum,name,
@@ -104,15 +104,15 @@ export const postTransfer = async (req, res) => {
             const rAcc = await Customer.findOne({ accNum: recipient_accnum });
             if (!rAcc) {
                 req.flash("er_msg", "no account found");
-                return res.redirect("/transfer");
+                return res.redirect("/customer/transfer");
             }
             let recipientName = rAcc.fname + " " + rAcc.lname;
             let recipientCurrentBal = rAcc.cbal;
-
+            
             //Perform Mathematical Transaction
             if (cB < transfer_amount) {
                 req.flash("er_msg", " your account balance is too low");
-                return res.redirect("/transfer");
+                return res.redirect("/customer/transfer");
             } else {
                 const senderNewBal = cB - transfer_amount;
                 const recipientNewBal =
@@ -124,7 +124,7 @@ export const postTransfer = async (req, res) => {
                 );
                 if (!sAcc) {
                     req.flash("er_msg", "failed to update senders acc");
-                    return res.redirect("/transfer");
+                    return res.redirect("/customer/transfer");
                 }
                 //Update Recipient Account
                 const cAcc = await Customer.findOneAndUpdate(
@@ -133,7 +133,7 @@ export const postTransfer = async (req, res) => {
                 );
                 if (!cAcc) {
                     req.flash("er_msg", "failed to update reciver acc");
-                    return res.redirect("/transfer");
+                    return res.redirect("/customer/transfer");
                 }
                 //Insert For Reciver
                 const recipient = await Transaction.create({
@@ -154,12 +154,12 @@ export const postTransfer = async (req, res) => {
                     transaction_amt: transfer_amount,
                 });
                 req.flash("success", "transfer successful");
-                return res.redirect("/transfer");
+                return res.redirect("/customer/transfer");
             }
         } catch (error) {
             console.log(error)
             req.flash("er_msg", "error updating transfer");
-            return res.redirect("/transfer");
+            return res.redirect("/customer/transfer");
         }
     }
 }
@@ -174,7 +174,7 @@ export const getTransactions = async (req, res) => {
         const cus = await Customer.findOne({ accNum: aN });
         if (!cus) {
             req.flash("er_msg", "no account found");
-            return res.redirect("/customerDashboard");
+            return res.redirect("/customer/dashboard");
         }
         try {
             let customerName = cus.fname + " " + cus.lname;
@@ -186,21 +186,17 @@ export const getTransactions = async (req, res) => {
         } catch (error) {
             console.log(error)
             req.flash("er_msg", "you have No transaction");
-            return res.redirect("/customer-dashboard");
+            return res.redirect("/customer/dashboard");
         }
     } catch (error) {
         console.log(error)
         req.flash("er_msg", "No transactions");
-        return res.redirect("/customer-dashboard");
+        return res.redirect("/customer/dashboard");
 
     }
 };
 export const custLogout = (req, res) => {
     let cB = req.session.cbal, aN = req.session.acnum;
-    if (!aN || !cB) {
-        req.flash("er_msg", "login to access app");
-        return res.redirect("/customer");
-    }
     if (aN || cB) {
         req.session.destroy();
         return res.redirect("/customer");

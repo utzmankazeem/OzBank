@@ -1,48 +1,57 @@
-<% title= 'Transfer'%>
-<%-include('layout/cusHeader')%>
-             <main>
-                    
-                    <aside>
-                        <%if(typeof errors != 'undefined'){%> 
-                            <% errors.map((error)=>{%> 
-                            <p style="color:red ;"><%- error.msg %></p>
-                            <%}) %>
-                        <%}%>
-                        <% if(success != 'undefined') { %>
-                            <p style="color:#fff;"> <%- success %> </p>
-                        <% } %>
-                        <% if(errMsg != 'undefined'){ %>
-                            <p style="color: red;"> <%- errMsg %> </p>
-                        <% } %>
-                        <form action="/transfer" method="post">
-                            <input type="hidden" name="name" value="<%= customer.fname +' '+ customer.lname %>"></p>
-                            <label>Sender Acc Number </label>
-                             <input type="number" name="senders_accnum" value="<%= customer.accNum %>"></p>
-                            <label>Reciever Acc Number </label>
-                             <input type="number" name="receivers_accnum"></p>
-                            <% let acc= ["Savings", "Current", "Fixed"] %>
-                            <label>Acc Type <select name="type">
-                                <option value="">accout type</option>
-                            <% acc.map((type)=>{%> 
-                                <option value="<%=type%>"><%=type%></option>
-                            <%})%>
-                            </select> 
-                            
-                            <label>Transfer Amount </label>
-                             <input type="number" name="amount">
-                             <button type="submit"> send </button>
-                        </form>
-                        
-                    </aside>
-            
-                <article>
-                    <p>Account Name: <%= customer.fname + "  " + customer.lname %> </p>
-                    <p>Acc Num: <%= customer.accNum%> </p>
-                    <p> Balance: <%= customer.cbal %> </p>
-                    <p> Bvn: <%= customer.bvn %> </p>
-                    <p> Acc Type: <%= customer.accType %> </p>
-                    <p> Mobile: <%= customer.mobile %> </p>
-                    
-                </article>
-                </main>
-<%-include('layout/cusFoot')%>
+<% title='Transfer' %>
+    <%-include('layout/cusHeader')%>
+        <main>
+            <aside>
+                <%if(typeof errors !='undefined' ){%>
+                    <% errors.map((error)=>{%>
+                        <p style="color:red ;"><%- error.msg %></p>
+                        <%}) %>
+                            <%}%>
+                                <% if(success !='undefined' ) { %>
+                                    <p style="color:#fff;"> <%- success %> </p>
+                                    <% } %>
+                                        <% if(errMsg !='undefined' ){ %>
+                                            <p style="color: red;"> <%- errMsg %> </p>
+                                            <% } %>
+                                                <form action="/customer/transfer" method="post">
+                                                    <input type="hidden" name="name"
+                                                        value="<%= customer.fname +' '+ customer.lname %>"></p>
+                                                    <label>Sender Acc Number </label>
+                                                    <input type="number" name="senders_accnum"
+                                                        value="<%= customer.accNum %>"></p>
+                                                    <label>Reciever Acc Number </label>
+                                                    <input type="number" name="receivers_accnum"></p>
+                                                    <% let acc=["Savings", "Current" , "Fixed" ] %>
+                                                        <label>Acc Type <select name="type">
+                                                                <option value="">accout type</option>
+                                                                <% acc.map((type)=>{%>
+                                                                    <option value="<%=type%>">
+                                                                        <%=type%>
+                                                                    </option>
+                                                                    <%})%>
+                                                            </select>
+
+                                                            <label>Transfer Amount </label>
+                                                            <input type="number" name="amount">
+                                                            <button type="submit"> send </button>
+                                                </form>
+
+            </aside>
+
+            <article>
+                <p>Account Name: <%= customer.fname + "  " + customer.lname %>
+                </p>
+                <p>Acc Num: <%= customer.accNum%>
+                </p>
+                <p> Balance: <%= customer.cbal %>
+                </p>
+                <p> Bvn: <%= customer.bvn %>
+                </p>
+                <p> Acc Type: <%= customer.accType %>
+                </p>
+                <p> Mobile: <%= customer.mobile %>
+                </p>
+
+            </article>
+        </main>
+        <%-include('layout/cusFoot')%>

@@ -1,10 +1,7 @@
 <% title= 'Viewcustomer'%>
 <%-include('layout/rootHead')%>   
-           <main>
-               
-               
-               
-           <table border="1" align="center">
+           <main>              
+           <table align="center">
                <tr>
                    <th>Name</th>
                    <th>Mobile</th>
@@ -18,7 +15,7 @@
                         <td> <%-customer.mobile %> </td>
                         <td> <%-customer.email %> </td>
                         <td> <%-customer.sex %> </td>
-                        <td> <a href="/details/<%-customer._id%>">more</a> </td>
+                        <td> <a href="/details/<%-customer._id%>"><button>more</button></a> </td>
                </tr>
                <%})%>
                <tr style="border: none;">
