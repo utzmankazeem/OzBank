@@ -1,6 +1,6 @@
 import express from 'express'
 import flash from 'connect-flash'
-import session from 'express-session'
+import cookieSession from 'cookie-session'
 import connectDB from './config/key.js'
 import home from './routes/index.js'
 import bank from './routes/banking.js'
@@ -15,18 +15,16 @@ app.use(express.json())
 app.use(express.static('public'));
 
 // Session Midlware
-app.use(session({
+app.use(cookieSession({
     secret: 'secret',
     saveUninitialized: true,
-    resave: false,
-    cookie: {}
+    resave: true,
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours,
+    cookie: {
+        secure: true
+    }
 }))
-
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
-}
-
 
 // Flash Msgs
 app.use(flash());
