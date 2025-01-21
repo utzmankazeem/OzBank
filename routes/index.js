@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from "multer";
 import path from 'path';
+import errorHandler from "../middlewares/multerError.js"
 const router = express.Router();
  
 ///// Storage for Passport Image /////
@@ -59,7 +60,7 @@ router.get("/dashboard", dashboard)
 // Add Customer //
 router.route("/addcustomer")
 .get(getAddCustomer)
-.post(upload.single("passport"), postAddCustomer)
+.post(upload.single("passport"), errorHandler, postAddCustomer)
 
 router.route("/viewcustomer")
 .get(viewCustomer)

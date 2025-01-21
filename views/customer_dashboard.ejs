@@ -9,10 +9,14 @@
                         <% if(errMsg != 'undefined'){ %>
                         <p style="color: red"> <%= errMsg %> </p>
                         <% } %>
-                    <img src="data:public/upload/<%=customer.passport.contentType%>;base64,<%- customer.passport.data.toString('base64')%>" alt="profile" width="200" height="200" />
+                    <% if (customer.passport && customer.passport.data) { %>
+                        <img src="data:<%=customer.passport.contentType%>;base64,<%= customer.passport.data.toString('base64') %>" alt="profile" width="200" height="200" />
+                    <% } else { %>
+                        <img src="/path/to/default/image.png" alt="profile" width="200" height="200" />
+                    <% } %>
                 </aside>
-                
                 <article>
+                <h2>Customer Details</h2>
                     <p><%- customer.fname + " - " + customer.lname %></p>
                     <p>BVN: <%- customer.bvn%></p>    
                     <p>Acc Number: <%- customer.accNum%></p>

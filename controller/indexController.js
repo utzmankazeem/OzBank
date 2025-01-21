@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import fs from "fs";
+import mongoose from 'mongoose';
 import Admin from "../models/banker.js";
 import Customer from "../models/customer.js";
 
@@ -242,10 +243,19 @@ export const customerDetails = async (req, res) => {
             req.flash("er_msg", "login to access app");
             res.redirect("/signin");
         }
+
+        if (!mongoose.Types.ObjectId.isValid(_id)) {
+          req.flash("er_msg", "Invalid customer ID");
+          return res.redirect("/viewcustomer");
+        }
+
         const customer = await Customer.findById(_id);
         if (customer) {
             res.render("details", { a_id, a_name, a_email, details: customer });
-        }
+        } else {
+          req.flash("er_msg", "Customer not found");
+          return res.redirect("/viewcustomer");
+      }
     } catch (error) {
       req.flash("er_msg", "problem getting customer details");
       res.redirect("/viewcustomer")
@@ -261,10 +271,19 @@ export const getEdit = async (req, res) => {
             req.flash("er_msg", "login to access app");
             res.redirect("/signin");
         }
+
+        if (!mongoose.Types.ObjectId.isValid(_id)) {
+          req.flash("er_msg", "Invalid customer ID");
+          return res.redirect("/viewcustomer");
+        }
+
         const customer = await Customer.findById(_id);
         if (customer) {
             res.render("edit", { a_id, a_name, a_email, details: customer });
-        }
+        } else {
+          req.flash("er_msg", "Customer not found");
+          return res.redirect("/viewcustomer");
+      }
     } catch (error) {
       req.flash("er_msg", "problem viewing customer details");
       res.redirect("/viewcustomer")
