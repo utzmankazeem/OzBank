@@ -18,8 +18,15 @@ app.use(express.static('public'));
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
-    resave: true
+    resave: false,
+    cookie: {}
 }))
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
 
 // Flash Msgs
 app.use(flash());
