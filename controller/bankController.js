@@ -196,9 +196,10 @@ export const getTransactions = async (req, res) => {
     }
 };
 export const custLogout = (req, res) => {
-    let cB = req.session.cbal, aN = req.session.acnum;
-    if (aN || cB) {
-        req.session.destroy();
-        return res.redirect("/customer");
-    }
+     // Clear session data
+     req.session = null; 
+     // Explicitly delete the cookie
+     res.clearCookie('session'); 
+
+     res.redirect("/customer");
 };

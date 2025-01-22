@@ -345,10 +345,11 @@ export const deleteCustomer = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-    let a_id = req.session.admin_id;
-    if (a_id) {
-        req.session.destroy();
+        // Clear session data
+        req.session = null; 
+        // Explicitly delete the cookie
+        res.clearCookie('session'); 
+
         res.redirect("/");
-    }
 };
 

@@ -10,11 +10,8 @@ const connectDB = async () => {
     mongoose.set('strictQuery', true)
     try {
         const conn = await mongoose.connect(dbUri, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
             family:4
         });
-        return conn;
     } catch (err) {
         throw err
         // process.exit(1);

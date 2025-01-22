@@ -64,7 +64,7 @@ main {
     flex-direction: row;
     justify-content:space-around;
     text-align: center;
-    height: 80vh;
+    height: 78vh;
     scroll-behavior: smooth;
     overflow-y: auto;
 
